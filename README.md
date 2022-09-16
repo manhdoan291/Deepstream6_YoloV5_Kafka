@@ -69,7 +69,7 @@ This repository gives a detailed explanation on making custom trained deepstream
  11. Open /opt/nvidia/deepstream/deepstream/sources/apps/sample_apps/deepstream-test5/deepstream_test5_app_main.c file.
 
  	
-	Follow *IMPORTANT Note 1* and *IMPORTANT Note 2* and make small edits in the file. File attached for reference.
+	a) Follow IMPORTANT Note 1 and *IMPORTANT Note 2* and make small edits in the file. File attached for reference.
  
  12. Edit file /opt/nvidia/deepstream/deepstream/sources/DeepStream-Yolo/deepstream_app_config.txt. File attached for reference.
 	
