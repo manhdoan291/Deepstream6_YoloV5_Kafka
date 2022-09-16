@@ -2,7 +2,7 @@
 This repository gives a detailed explanation on making custom trained deepstream-Yolo models predict and send message over kafka.
 
  1. Install NVIDIA deepstream-6.0/6.0.1/6.1
-	 a)  Test if deepstream-test1 is working fine.
+	 >  Test if deepstream-test1 is working fine.
 
  2. Keep your custom trained YoloV5 model yolov5s.pt ready
 
