@@ -3,23 +3,23 @@ This repository gives a detailed explanation on making custom trained deepstream
 
  1. Install NVIDIA deepstream-6.0/6.0.1/6.1
 
-	a) Test if deepstream-test1 is working fine.
+	- Test if deepstream-test1 is working fine.
 
  2. Keep your custom trained YoloV5 model yolov5s.pt ready
 
  3. Clone Deepstream-Yolo (https://github.com/marcoslucianops/DeepStream-Yolo) repository at /opt/nvidia/deepstream/deepstream/sources/ location.
 	
-	a) Clone yolov5 (https://github.com/ultralytics/yolov5.git) repository at any location say /home/ozsports/.
+	- Clone yolov5 (https://github.com/ultralytics/yolov5.git) repository at any location say /home/ozsports/.
 	
-	b) `cd yolov5`
+	- `cd yolov5`
 	
-	c) Build a conda environment with python
+	- Build a conda environment with python
 	
-	d) `pip3 install -r requirements.txt`
+	- `pip3 install -r requirements.txt`
 	
-	e) Move the custom trained Yolov5 model yolov5s.pt to yolov5 folder at location /home/ozsports/yolov5/.
+	- Move the custom trained Yolov5 model yolov5s.pt to yolov5 folder at location /home/ozsports/yolov5/.
 	
-	f) Sudo copy the gen_wts_yoloV5.py file from /opt/nvidia/deepstream/deepstream/sources/DeepStream-Yolo/utils directory to the /home/ozsports/yolov5/ folder.
+	- Sudo copy the gen_wts_yoloV5.py file from /opt/nvidia/deepstream/deepstream/sources/DeepStream-Yolo/utils directory to the /home/ozsports/yolov5/ folder.
 	
 	g) Generate the cfg and wts files 
 	`python3 gen_wts_yoloV5.py -w yolov5s.pt`
