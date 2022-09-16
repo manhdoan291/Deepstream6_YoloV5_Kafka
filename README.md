@@ -48,54 +48,54 @@ This repository gives a detailed explanation on making custom trained deepstream
  
  11. Open /opt/nvidia/deepstream/deepstream/sources/apps/sample_apps/deepstream-test5/deepstream_test5_app_main.c file.
 
-	> Follow *IMPORTANT Note 1* and *IMPORTANT Note 2* and make small edits in the file. File attached for reference.
+> Follow *IMPORTANT Note 1* and *IMPORTANT Note 2* and make small edits in the file. File attached for reference.
  
  12. Edit file /opt/nvidia/deepstream/deepstream/sources/DeepStream-Yolo/deepstream_app_config.txt. File attached for reference.
-	> Change the input video file path
-	> [source0]
-	> ...
-	>  #uri=file:///opt/nvidia/deepstream/deepstream/samples/streams/sample_1080p_h264.mp4
-	>  uri=file:///home/ozer/Downloads/Main_1.mp4
-	>  ...
-	>  b) Introduce the sink for kafka message streaming
-	>  [sink1]
-	>  ...
-	>  type=6
-	>  msg-conv-config=/opt/nvidia/deepstream/deepstream-6.1/sources/apps/sample_apps/deepstream-test5/configs/dstest5_msgconv_sample_config.txt
-	>  msg-conv-payload-type=0
-	>  msg-broker-proto-lib=/opt/nvidia/deepstream/deepstream/lib/libnvds_kafka_proto.so
-	>  #msg-broker-conn-str=<YOUR-IP>;<PORT>;<topic>
-	>  msg-broker-conn-str=192.168.1.40;9092;test
-	>  #topic=<topic>
-	>  topic=test
-	>  c) Edit the path of the config-file.
-	>  [primary-gie]
-	>  ...
-	>  config-file=/opt/nvidia/deepstream/deepstream/sources/DeepStream-Yolo/config_infer_primary_yoloV5.txt
+> Change the input video file path
+> [source0]
+> ...
+>  #uri=file:///opt/nvidia/deepstream/deepstream/samples/streams/sample_1080p_h264.mp4
+>  uri=file:///home/ozer/Downloads/Main_1.mp4
+>  ...
+>  b) Introduce the sink for kafka message streaming
+>  [sink1]
+>  ...
+>  type=6
+>  msg-conv-config=/opt/nvidia/deepstream/deepstream-6.1/sources/apps/sample_apps/deepstream-test5/configs/dstest5_msgconv_sample_config.txt
+>  msg-conv-payload-type=0
+>  msg-broker-proto-lib=/opt/nvidia/deepstream/deepstream/lib/libnvds_kafka_proto.so
+>  #msg-broker-conn-str=<YOUR-IP>;<PORT>;<topic>
+>  msg-broker-conn-str=192.168.1.40;9092;test
+>  #topic=<topic>
+>  topic=test
+>  c) Edit the path of the config-file.
+>  [primary-gie]
+>  ...
+>  config-file=/opt/nvidia/deepstream/deepstream/sources/DeepStream-Yolo/config_infer_primary_yoloV5.txt
  
  13. Edit file /opt/nvidia/deepstream/deepstream-6.1/sources/DeepStream-Yolo/config_infer_primary_yoloV5.txt. File attached for reference.
-	> a) Preferably put absolute path whenever needed. Also edit num-detected-classes to your custom classes.
-	> [property]
-	> gpu-id=0
-	> net-scale-factor=0.0039215697906911373
-	> model-color-format=0
-	> custom-network
-	> config=/opt/nvidia/deepstream/deepstream/sources/DeepStream-Yolo/yolov5s.cfg
-	> model-file=/opt/nvidia/deepstream/deepstream/sources/DeepStream-Yolo/yolov5s.wts
-	> model-engine-file=/opt/nvidia/deepstream/deepstream/sources/DeepStream-Yolo/model_b1_gpu0_fp32.engine
-	> #int8-calib-file=calib.table
-	> labelfile-path=/opt/nvidia/deepstream/deepstream/sources/DeepStream-Yolo/labels.txt
-	> batch-size=1
-	> network-mode=0
-	> num-detected-classes=4
-	> interval=0
-	> gie-unique-id=1
-	> process-mode=1
-	> network-type=0
-	> cluster-mode=2
-	> maintain-aspect-ratio=1
-	> parse-bbox-func-name=NvDsInferParseYolo
-	> custom-lib-path=/opt/nvidia/deepstream/deepstream/sources/DeepStream-Yolo/nvdsinfer_custom_impl_Yolo/libnvdsinfer_custom_impl_Yolo.so
+> a) Preferably put absolute path whenever needed. Also edit num-detected-classes to your custom classes.
+> [property]
+> gpu-id=0
+> net-scale-factor=0.0039215697906911373
+> model-color-format=0
+> custom-network
+> config=/opt/nvidia/deepstream/deepstream/sources/DeepStream-Yolo/yolov5s.cfg
+> model-file=/opt/nvidia/deepstream/deepstream/sources/DeepStream-Yolo/yolov5s.wts
+> model-engine-file=/opt/nvidia/deepstream/deepstream/sources/DeepStream-Yolo/model_b1_gpu0_fp32.engine
+> #int8-calib-file=calib.table
+> labelfile-path=/opt/nvidia/deepstream/deepstream/sources/DeepStream-Yolo/labels.txt
+> batch-size=1
+> network-mode=0
+> num-detected-classes=4
+> interval=0
+> gie-unique-id=1
+> process-mode=1
+> network-type=0
+> cluster-mode=2
+> maintain-aspect-ratio=1
+> parse-bbox-func-name=NvDsInferParseYolo
+> custom-lib-path=/opt/nvidia/deepstream/deepstream/sources/DeepStream-Yolo/nvdsinfer_custom_impl_Yolo/libnvdsinfer_custom_impl_Yolo.so
  
  14. Make sure you have kafka and kafka-composer in your machine.
  
@@ -108,15 +108,15 @@ This repository gives a detailed explanation on making custom trained deepstream
  18. Open another terminal and in deepstream conda environment run consumer.py. `python3 consumer.py`. File attached for reference.
  
  19. Make sure you have edited the /opt/nvidia/deepstream/deepstream-6.1/sources/apps/sample_apps/deepstream-test5/Makefile
-	> a) for Deepstream-6.0/6.0.1, CUDA_VER=11.4
-	> b) for Deepstream-6.1, CUDA_VER=11.6
+> a) for Deepstream-6.0/6.0.1, CUDA_VER=11.4
+> b) for Deepstream-6.1, CUDA_VER=11.6
  
  20. Open another terminal at /opt/nvidia/deepstream/deepstream/sources/apps/sample_apps/deepstream-test5/ folder and make the files 
-	> a) `sudo make clean` 
-	> b) `sudo make all`
+> a) `sudo make clean` 
+> b) `sudo make all`
  
  21. Finally, run the deepstream-test5 app 
-	> `./deepstream-test5-app -c ../../../DeepStream-Yolo/deepstream_app_config.txt`
+> `./deepstream-test5-app -c ../../../DeepStream-Yolo/deepstream_app_config.txt`
  22. You should see an On Screen Display with predictions and metadata on terminal with consumer.py running in a conda deepstream environment.
 
   
